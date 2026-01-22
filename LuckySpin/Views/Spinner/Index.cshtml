@@ -1,14 +1,17 @@
 ﻿@model LuckySpin.Models.Player
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 @{
     Layout = "_Layout";
 }
-
+<h1 style="color: red;">Welcome to Lucky Spin!</h1>
 <form asp-action="Index" asp-controller="Spinner">
     <fieldset>
         <label asp-label-for="FirstName">
             <input asp-for="FirstName" placeholder=" Your First Name"  />
             <span asp-validation-for="FirstName"></span>
+            <span asp-for="FirstName"><br />Please enter your name.</span>
+
         </label>
         <label>
             <select asp-for="Luck">
@@ -25,6 +28,7 @@
                 <option>10</option>
             </select>
             <span asp-validation-for="Luck"></span>
+            <span asp-for="Luck"><br />Please enter your lucky number.</span>
         </label>
     </fieldset>
     <input type="submit" value="Start the Game" />

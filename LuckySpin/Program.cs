@@ -8,7 +8,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<LuckySpin.Services.TextTransform>();
 //TODO: Do Step 0) Here for both the Repository and Player classes as Singleton services
 
-
+builder.Services.AddSingleton<LuckySpin.Models.Player>();
+builder.Services.AddSingleton<LuckySpin.Services.Repository>();
 var app = builder.Build();
 
 

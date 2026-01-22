@@ -10,9 +10,9 @@
                    You can access the Player information via the Repository -->
         @foreach( LuckySpin.Models.Spin spin in @Model.PlayerSpins){
             <tr> <!-- TODO: Complete the table cells in a row with the Player Name, Luck Number, and Spin Result -->
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>@Model.Player.FirstName</td>
+                <td>@Model.Player.Luck</td>
+                <td>@(spin.isWinning(@Model.Player) ? "Win" : "Lose")</td>
             </tr>
         }
     </tbody>

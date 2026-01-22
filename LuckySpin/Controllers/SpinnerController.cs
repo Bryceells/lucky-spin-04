@@ -11,13 +11,15 @@ namespace LuckySpin.Controllers
     {
         //DIJ in 4 STEPS -
         //Step 0) Register the Repository class as a Singleton Service in Program.cs 
+
         //TODO: Step 1) add an instance variable here of type Repository
+        private readonly Repository _repository;
 
         //TODO: Step 2) Include the DIJ repository to be passed as a parameter to the constructor
-        public SpinnerController()
+        public SpinnerController(Repository repository)
         {
             //TODO: Step 3) Assign the DIJ repository to the instance variable to use in Controller Actions
-
+            _repository = repository;
         }   
         /***
          * Index Action (GET and POST)
@@ -30,9 +32,10 @@ namespace LuckySpin.Controllers
             if(!ModelState.IsValid){ return View(); } //Server-side validation check of user input against Player Model
             
             //TODO: Add the  player from the [HttpPost] data to the repository
+            _repository.Player = player;
 
             //TODO: Instead of returning a View, return a Redirect to Spin Action to perform a Spin 
-            return View();
+            return RedirectToAction("Spin");
         } 
         /***
          * Spin Action (GET only)
@@ -41,9 +44,11 @@ namespace LuckySpin.Controllers
         public IActionResult Spin()
         {
             // TODO: Create a new Spin instance and add it to the repository
+            Spin spin = new Spin();
+            _repository.AddSpin(spin);
             
             // TODO: Pass the latest Spin to the Spin View
-            return View("Spin");
+            return View(spin);
         }
         /***
          * ListSpins Action (GET only)
@@ -52,7 +57,8 @@ namespace LuckySpin.Controllers
         public IActionResult LuckList()
         {
                 //TODO: Pass the repository to the LuckList View
-                return View();
+                return View(_repository);
+                
         }
 
     }

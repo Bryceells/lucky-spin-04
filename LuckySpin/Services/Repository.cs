@@ -9,8 +9,11 @@ namespace LuckySpin.Services
         private List<Spin> _spins = new List<Spin>(); //NOTE: This is an in-memory list of spins
         //TODO: Complete the Dependency Injection for the Player object
         private Player _player;
+
+
         public Repository()
         {
+
         }
 
        //Property

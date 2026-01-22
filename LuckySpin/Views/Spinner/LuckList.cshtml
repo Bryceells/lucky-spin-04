@@ -1,0 +1,24 @@
+﻿@model LuckySpin.Services.Repository;
+@{
+    Layout = "_Layout";
+}
+<h1>All Your Luck</h1>
+<table>
+    <thead><tr><th>Name</th><th>Luck</th><th>Result</th></tr></thead>
+    <tbody>
+        <!-- Note: This foreach loop iterates through the Player Spins List in the Repository backing this view. 
+                   You can access the Player information via the Repository -->
+        @foreach( LuckySpin.Models.Spin spin in @Model.PlayerSpins){
+            <tr> <!-- TODO: Complete the table cells in a row with the Player Name, Luck Number, and Spin Result -->
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- TODO BONUS: Use C# List methods (https://www.geeksforgeeks.org/c-sharp/list-class-in-c-sharp/#methods)
+                 to summarizes the Player's rolling history, total wins and percentage wins -->
+<h2>Rolling History</h2>
+<p>Total Wins/Spins:    </p>
+<p>Percent Wins:   </p>
